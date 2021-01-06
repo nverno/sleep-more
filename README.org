@@ -1,0 +1,44 @@
+#+TITLE: setup chromedriver and cron jobs
+
+* Install
+Install chromedriver (eg. apt install chromium-chromedriver)
+
+Need python3 and run
+#+begin_src sh
+pip install -r requirements
+#+end_src
+
+* Credentials
+create .env file in this directory (same as run.sh) with
+#+begin_src sh
+export GITHUB_USERNAME=<username>
+export GITHUB_PASSWORD=<password>
+#+end_src
+
+* Cron format
+| *   | *  | *            | *     | *           |
+|-----+----+--------------+-------+-------------|
+| min | hr | day of month | month | day or week |
+
+
+eg. run every weekday at 8:55 am
+#+begin_quote
+55 8 * * 1-5 bash /path/to/run.sh
+#+end_quote
+
+Run every weekday at 5:25 pm
+#+begin_quote
+25 17 * * 1-5 bash /path/to/run.sh
+#+end_quote
+
+* Create
+Make cron jobs with
+#+begin_src sh
+crontab -e
+#+end_src
+
+Add
+#+begin_quote
+55 8 * * 1-5 bash /path/to/run.sh
+25 17 * * 1-5 bash /path/to/run.sh
+#+end_quote

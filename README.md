@@ -72,5 +72,6 @@ Make cron jobs with
 Add
 
 > 55 8 \* \* 1-5 bash /path/to/run.sh
+> 
 > 25 17 \* \* 1-5 bash /path/to/run.sh
 

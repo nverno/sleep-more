@@ -40,5 +40,6 @@ crontab -e
 Add
 #+begin_quote
 55 8 * * 1-5 bash /path/to/run.sh
+
 25 17 * * 1-5 bash /path/to/run.sh
 #+end_quote

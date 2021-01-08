@@ -18,4 +18,4 @@ if ! command -v chromedriver >/dev/null 2>&1; then
     echo "chromedriver not found" && exit 1
 fi
 
-python automator.py
+"${PYTHON:-python}" "${DIR}/automator.py"

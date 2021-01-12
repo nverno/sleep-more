@@ -33,21 +33,27 @@ driver\
     .find_element_by_xpath("//input[@name='commit']")\
     .click()
 
-# interview-db
-driver\
-    .find_element_by_id('react-tabs-4').click()
+# interview-db: select attendance tab
+attendance_tab = driver.find_element_by_xpath('//li[text() = "Attendance"]')
+attendance_tab.click()
 
-# need to wait for tab panel to load
+# need to wait for tab panel to load to access buttons
 try:
-    element = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located(
-            (By.XPATH, "//*[@id='react-tabs-5']/div/div/button[1]")
-        ))
-    # print(element)
+    tab_id = attendance_tab.get_attribute('id')
+    print(f"tab_id: {tab_id}")
+    panel = driver.find_element_by_xpath('//div[@role="tabpanel"]')
 
-    for btn in driver.find_elements_by_xpath('//*[@id="react-tabs-5"]//button'):
+    # import pdb; pdb.set_trace()
+    buttons = WebDriverWait(driver, 5).until(
+        lambda d: panel.find_elements(By.XPATH, '//button'))
+        # EC.presence_of_element_located(
+        #     (By.XPATH, f"//*[@id='{tab_id}']/div/div/button[1]")
+        # ))
+
+    for btn in buttons:
         print("Clicking ", btn.text)
         btn.click()
+
     print('clicked em')
     
 except Exception:

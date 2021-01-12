@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import sys
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -40,7 +41,7 @@ attendance_tab.click()
 # need to wait for tab panel to load to access buttons
 try:
     tab_id = attendance_tab.get_attribute('id')
-    print(f"tab_id: {tab_id}")
+    # print(f"tab_id: {tab_id}")
     panel = driver.find_element_by_xpath('//div[@role="tabpanel"]')
 
     # import pdb; pdb.set_trace()
@@ -51,13 +52,14 @@ try:
         # ))
 
     for btn in buttons:
-        print("Clicking ", btn.text)
+        print("Clicking ", btn.text, file=sys.stderr)
         btn.click()
 
     print('clicked em')
     
 except Exception:
-    print('oops, you get a strike lol')
-
+    print('oops, you get a strike lol', file=sys.stderr)
+    sys.exit(1)
+    
 finally:
     driver.close()

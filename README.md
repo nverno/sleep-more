@@ -6,7 +6,7 @@ Install chromedriver (eg. apt install chromium-chromedriver)
 
 Need python3 and run
 
-    pip install -r requirements
+    pip install -r requirements.txt
 
 
 # Credentials
